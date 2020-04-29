@@ -76,13 +76,9 @@
       tiles.addTo(map);
         
          
-    //step 2
-      
- //   plants.features.sort(function(a, b) {
-   // return b.properties.capacity_mw - a.properties.capacity_mw;
-//});
+  
     
-    //step 1    and then change to step 3 with 'return'
+   
       var Biomass = L.geoJson(plants, {
           pointToLayer: function(feature,latlng) {
               console.log(feature.properties.fuel_source)
@@ -91,7 +87,7 @@
                  weight: 2,
                  fillColor: 'yellow',
                  fillOpacity: .5,
-                 radius: getRadius(feature.properties.capacity_mw) //step4
+                 radius: getRadius(feature.properties.capacity_mw) 
               });   
           },
           
@@ -99,13 +95,13 @@
               if(feature.properties.fuel_source['Nuclear']){
                   return feature
               };
-             // console.log(feature);
+          
           },
           
           
      
          
-    //step 5
+    
     onEachFeature : function(feature,layer) {
     layer.on('mouseover', function() {
     layer.setStyle({
@@ -119,7 +115,7 @@ layer.on('mouseout', function() {
 });
 
 
-          //step 6  
+         
           
           var name = feature.properties.plant_name
           var capacity = feature.properties.capacity_mw.toLocaleString()
@@ -216,7 +212,7 @@ layer.on('mouseout', function() {
     })
     .addTo(map);
         
-//step 4
+
         function getRadius(area){
         var radius = Math.sqrt(area/Math.PI);
         return radius *.7   
